@@ -42,9 +42,9 @@
     }, 0);
   };
 
-  window.doTestEventListener = function () {
+  window.doTestAddEventListener = function () {
     var i = 0;
-    var end = start('eventListener');
+    var end = start('addEventListener');
     var dom = document.createElement('div');
     var eventName = 'load';
     doTest(function (i) {
@@ -53,6 +53,18 @@
       }, false);
     });
     dom.dispatchEvent(new Event(eventName));
+  };
+
+  window.doTestWebWorkers = function () {
+    var i = 0;
+    var end = start('WebWorkers');
+    var src = 'self.addEventListener("message", function (e) {e.data === ' + LOOPCOUNT + ' && self.postMessage("end");}, false);';
+    var blob = new Blob([src], {type: 'text/javascript'});
+    var worker = new Worker(URL.createObjectURL(blob));
+    worker.addEventListener('message', end, false);
+    doTest(function () {
+      worker.postMessage(++i);
+    });
   };
 
 }());
