@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf=8">
+  <link href="all.css" rel="stylesheet" type="text/css">
+  <script src="app.js"></script>
+</head>
+<body>
+  <main>
+    <h1>JavaScriptで非同期で処理を走らせるやり方</h1>
+    <section class="description">
+      <p>JavaScriptで非同期処理の書き方で最適なものがあるのかテスト。ベンチマークを図る。</p>
+    </section>
+    <section class="test-button-list">
+      <button onclick="doTestSetTimeout()">setTimeout</button>
+      <button onclick="doTestSetInterval()">setInterval</button>
+      <button onclick="doTestEventListener()">Dummy dom's eventListener</button>
+    </section>
+    <section class="console">test</section>
+  </main>
+</body>
+</html>
